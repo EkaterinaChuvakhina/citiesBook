@@ -24,9 +24,6 @@ public class Main {
         for (String line: lines){
             cities.add(LineParser.parse(line));
         }
-
-
-
         Menu.showMenu(cityBook);
     }
 }

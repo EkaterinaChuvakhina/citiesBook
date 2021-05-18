@@ -34,9 +34,10 @@ public class CityBook {
         return resultMap;
     }
 
-    public void countByRegion() {
+    public Map<String, Long> countByRegion() {
         Map<String, Long> collect = cities.stream().collect(Collectors.groupingBy(City::getRegion, Collectors.counting()));
-        System.out.println(collect.toString());
+        System.out.println(collect);
+        return collect;
     }
 
     public List<City> getCities() {
