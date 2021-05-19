@@ -33,8 +33,7 @@ public class CityBook {
     }
 
     public Map<String, Long> countByRegion() {
-        Map<String, Long> collect = cities.stream().collect(Collectors.groupingBy(City::getRegion, Collectors.counting()));
-        return collect;
+        return cities.stream().collect(Collectors.groupingBy(City::getRegion, Collectors.counting()));
     }
 
     public List<City> getCities() {
