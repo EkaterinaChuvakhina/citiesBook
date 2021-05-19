@@ -18,17 +18,19 @@ public class CityBook {
 
     public Map<Integer, Integer> searchMaxPopulation() {
         int[] arr = cities.stream().mapToInt(City::getPopulation).toArray();
-        int max = Arrays.stream(arr).max().getAsInt();
 
-        int maxIndex = -1;
+        int maxElement = arr[0];
+        int maxIndex = 0;
+
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == max) {
+            if (arr[i] > maxElement) {
                 maxIndex = i;
+                maxElement = arr[i];
             }
         }
         Map<Integer, Integer> resultMap = new HashMap<>();
 
-        resultMap.put(maxIndex, max);
+        resultMap.put(maxIndex, maxElement);
         return resultMap;
     }
 
