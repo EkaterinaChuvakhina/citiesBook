@@ -1,5 +1,7 @@
 package citybook.citybook;
 
+import java.util.List;
+
 public class City {
     private final String name;
     private final String region;
@@ -7,12 +9,12 @@ public class City {
     private final int population;
     private final String foundation;
 
-    public City(String name, String region, String district, int population, String foundation) {
-        this.name = name;
-        this.region = region;
-        this.district = district;
-        this.population = population;
-        this.foundation = foundation;
+    public City(List<String> parameters) {
+        this.name = parameters.get(1);
+        this.region = parameters.get(2);
+        this.district = parameters.get(3);
+        this.population = Integer.parseInt(parameters.get(4));
+        this.foundation = parameters.get(5);
     }
 
     public String getName() {
@@ -29,10 +31,6 @@ public class City {
 
     public int getPopulation() {
         return population;
-    }
-
-    public String getFoundation() {
-        return foundation;
     }
 
     @Override

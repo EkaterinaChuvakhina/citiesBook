@@ -6,27 +6,24 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CityBookTest {
 
     @Test
-    void print() {
-        List<City> cities = new ArrayList<>();
-    }
+    void sortByNamePositive() {
 
-
-    @Test
-    void sortASC() {
-
+        List<String> params = List.of("1","Москва", "Московская область", "Центральный", "10000000", "1143");
+        List<String> params1 = List.of("2","Новосибирск", "Алтайский край", "Сибирский", "600000", "1983");
+        List<String> params2 = List.of("3","Казань", "Алтайский край", "Сибирский", "20000000", "1973");
+        List<String> params3 = List.of("4","Алейск", "Алтайский край", "Сибирский", "20000", "1953");
         Comparator<City> comparator = new AscNameComparator();
         List<City> expected = new ArrayList<>();
 
-
-        City city1 = new City("Москва", "Московская облась", "Центральный", 10000000, "1143");
-        City city2 = new City("Новосибирск", "Алтайский край", "Сибирский", 600000, "1983");
-        City city3 = new City("Казань", "Алтайский край", "Сибирский", 20000000, "1973");
-        City city4 = new City("Алейск", "Алтайский край", "Сибирский", 20000, "1953");
+        City city1 = new City(params);
+        City city2 = new City(params1);
+        City city3 = new City(params2);
+        City city4 = new City(params3);
 
         expected.add(city4);
         expected.add(city3);
@@ -44,15 +41,20 @@ class CityBookTest {
     }
 
     @Test
-    void sortDESC() {
+    void sortByDistrictPositive() {
+
+        List<String> params = List.of("1","Москва", "Московская область", "Центральный", "10000000", "1143");
+        List<String> params1 = List.of("2","Новосибирск", "Алтайский край", "Сибирский", "600000", "1983");
+        List<String> params2 = List.of("3","Казань", "Алтайский край", "Сибирский", "20000000", "1973");
+        List<String> params3 = List.of("4","Алейск", "Алтайский край", "Сибирский", "20000", "1953");
 
         List<City> expected = new ArrayList<>();
+        Comparator<City> comparator = new AscNameComparator();
 
-
-        City city1 = new City("Москва", "Московская облась", "Центральный", 10000000, "1143");
-        City city2 = new City("Новосибирск", "Алтайский край", "Сибирский", 600000, "1983");
-        City city3 = new City("Казань", "Алтайский край", "Сибирский", 20000000, "1973");
-        City city4 = new City("Алейск", "Алтайский край", "Сибирский", 20000, "1953");
+        City city1 = new City(params);
+        City city2 = new City(params1);
+        City city3 = new City(params2);
+        City city4 = new City(params3);
 
         expected.add(city1);
         expected.add(city4);
@@ -70,13 +72,18 @@ class CityBookTest {
     }
 
     @Test
-    void searchMaxPopulation() {
+    void searchMaxPopulationPositive() {
         List<City> cities = new ArrayList<>();
 
-        City city1 = new City("Москва", "Московская облась", "Центральный", 500000, "1143");
-        City city2 = new City("Новосибирск", "Алтайский край", "Сибирский", 200000, "1983");
-        City city3 = new City("Казань", "Алтайский край", "Сибирский", 300000, "1973");
-        City city4 = new City("Алейск", "Алтайский край", "Сибирский", 400000, "1953");
+        List<String> params = List.of("1","Москва", "Московская область", "Центральный", "10000000", "1143");
+        List<String> params1 = List.of("2","Новосибирск", "Алтайский край", "Сибирский", "600000", "1983");
+        List<String> params2 = List.of("3","Казань", "Алтайский край", "Сибирский", "20000000", "1973");
+        List<String> params3 = List.of("4","Алейск", "Алтайский край", "Сибирский", "20000", "1953");
+
+        City city1 = new City(params);
+        City city2 = new City(params1);
+        City city3 = new City(params2);
+        City city4 = new City(params3);
 
         cities.add(city1);
         cities.add(city4);
@@ -84,29 +91,35 @@ class CityBookTest {
         cities.add(city2);
 
         HashMap<Integer, Integer> expected = new HashMap<>();
-        expected.put(0, 500000);
+        expected.put(2, 20000000);
 
         Map<Integer, Integer> actual = new CityBook(cities).searchMaxPopulation();
         assertEquals(expected, actual);
     }
 
     @Test
-    void countByRegion() {
+    void countByRegionPositive() {
         List<City> cities = new ArrayList<>();
 
-        City city1 = new City("Москва", "Московская область", "Центральный", 500000, "1143");
-        City city2 = new City("Новосибирск", "Алтайский край", "Сибирский", 200000, "1983");
-        City city3 = new City("Казань", "Алтайский край", "Сибирский", 300000, "1973");
-        City city4 = new City("Алейск", "Алтайский край", "Сибирский", 400000, "1953");
+        List<String> params = List.of("1","Москва", "Московская область", "Центральный", "10000000", "1143");
+        List<String> params1 = List.of("2","Новосибирск", "Алтайский край", "Сибирский", "600000", "1983");
+        List<String> params2 = List.of("3","Казань", "Алтайский край", "Сибирский", "20000000", "1973");
+        List<String> params3 = List.of("4","Алейск", "Алтайский край", "Сибирский", "20000", "1953");
+
+        City city1 = new City(params);
+        City city2 = new City(params1);
+        City city3 = new City(params2);
+        City city4 = new City(params3);
 
         cities.add(city1);
         cities.add(city4);
         cities.add(city3);
         cities.add(city2);
 
+
         HashMap<String, Long> expected = new HashMap<>();
-        expected.put("Московская область",1L);
-        expected.put("Алтайский край",3L);
+        expected.put("Московская область", 1L);
+        expected.put("Алтайский край", 3L);
 
 
         Map<String, Long> actual = new CityBook(cities).countByRegion();

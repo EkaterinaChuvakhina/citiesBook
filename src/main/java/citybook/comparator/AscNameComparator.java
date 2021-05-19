@@ -1,5 +1,6 @@
 package citybook.comparator;
 
+
 import citybook.citybook.City;
 
 import java.util.Comparator;

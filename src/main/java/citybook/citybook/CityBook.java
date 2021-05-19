@@ -10,10 +10,6 @@ public class CityBook {
         this.cities = cities;
     }
 
-    public void print() {
-        cities.forEach(System.out::println);
-    }
-
     public List<City> sort(Comparator<City> comparator) {
         List<City> sortedCityList = new ArrayList<>(cities);
         sortedCityList.sort(comparator);
@@ -21,7 +17,7 @@ public class CityBook {
     }
 
     public Map<Integer, Integer> searchMaxPopulation() {
-        int max = cities.stream().mapToInt(City::getPopulation).max().getAsInt();
+        int max = cities.stream().map(City::getPopulation).max(Integer::compareTo).get();
         List<Integer> populationList = cities.stream().map(City::getPopulation).collect(Collectors.toList());
 
         Map<Integer, Integer> resultMap = new HashMap<>();
@@ -30,13 +26,11 @@ public class CityBook {
         int maxPopulation = populationList.get(maxIndex);
 
         resultMap.put(maxIndex, maxPopulation);
-        System.out.println(resultMap);
         return resultMap;
     }
 
     public Map<String, Long> countByRegion() {
         Map<String, Long> collect = cities.stream().collect(Collectors.groupingBy(City::getRegion, Collectors.counting()));
-        System.out.println(collect);
         return collect;
     }
 

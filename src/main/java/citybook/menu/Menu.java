@@ -22,13 +22,13 @@ public final class Menu {
         System.out.println("5: Count by region");
         System.out.println("0: Exit");
 
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            Scanner scanner = new Scanner(System.in);
             int answer = scanner.nextInt();
             switch (answer) {
                 case 1:
-                   cityBook.print();
+                   CityBookConsolePrinter.print(cityBook.getCities());
                     break;
                 case 2:
                     CityBookConsolePrinter.print(cityBook.sort(new AscNameComparator()));
@@ -37,10 +37,10 @@ public final class Menu {
                     CityBookConsolePrinter.print(cityBook.sort(new DescDistrictComparator().thenComparing(new AscNameComparator())));
                     break;
                 case 4:
-                    cityBook.searchMaxPopulation();
+                    System.out.println(cityBook.searchMaxPopulation());
                     break;
                 case 5:
-                    cityBook.countByRegion();
+                    System.out.println(cityBook.countByRegion());
                     break;
                 case 0:
                     System.exit(0);
