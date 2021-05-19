@@ -17,8 +17,9 @@ public class CityBook {
     }
 
     public Map<Integer, Integer> searchMaxPopulation() {
-        int max = cities.stream().map(City::getPopulation).max(Integer::compareTo).get();
         int[] arr = cities.stream().mapToInt(City::getPopulation).toArray();
+        int max = Arrays.stream(arr).max().getAsInt();
+
         int maxIndex = -1;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == max) {
